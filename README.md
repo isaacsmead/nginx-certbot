@@ -2,7 +2,7 @@
 
 After playing around with mulit-container docker-compose projects I decided it's just simpler to just build up an NGINX base image with certbot and run though the certbot initialization process.  Dockefile is based on arm32v7 for use on Raspberry Pi 4.  
 
-1. `docker build -t my-certbot-image`
+1. `docker build -t my-certbot-image .`
 1. `docker volume create --name letsencrypt` or whatever name you want (for cert storage)
 1. ``` bash
     docker container run  \
