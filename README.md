@@ -10,7 +10,7 @@ After playing around with mulit-container docker-compose projects I decided it's
         -p 443:443 \
         -d \
         --name my-certbot-container \
-        -v letsencrypt: \ 
+        -v letsencrypt:/etc/letsencrypt \ 
         -v /path/to/here/conf.d:/etc/nginx/conf.d \
         my-certbot-image
     ```

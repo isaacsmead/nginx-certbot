@@ -4,7 +4,6 @@ RUN apt-get update \
     && apt-get install -y \
     certbot \
     python-certbot-nginx \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm /etc/nginx/conf.d/default.conf
+    && rm -rf /var/lib/apt/lists/* 
 
 VOLUME /usr/share/nginx/html /etc/nginx/conf.d
