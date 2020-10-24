@@ -2,6 +2,8 @@
 
 After playing around with mulit-container docker-compose projects I decided it's just simpler to just build up an NGINX base image with certbot and run though the certbot initialization process.  Dockefile is based on arm32v7 for use on Raspberry Pi 4.  
 
+## built image of this is now on dockerhub isaacsmead/nginx-certbot
+
 1. `docker build -t my-certbot-image .`
 1. `docker volume create --name letsencrypt` or whatever name you want (for cert storage)
 1. ``` bash
@@ -11,10 +13,11 @@ After playing around with mulit-container docker-compose projects I decided it's
         -d \
         --name my-certbot-container \
         -v letsencrypt:/etc/letsencrypt \ 
-        -v /path/to/here/conf.d:/etc/nginx/conf.d \
+        -v /path/to/your/conf.d:/etc/nginx/conf.d \
         my-certbot-image
     ```
 1. From `/config.d` edit or replace `default.conf` by placing your domain name(s) in the *server_name* field.
+    * alternatively map any directory with your config file to /etc/niginx/config.d
 1. certbot setup [reference](https://certbot.eff.org/lets-encrypt/debianbuster-nginx)
     1. exec into the running container and run: `certbot --nginx`
     1. follow instructions
